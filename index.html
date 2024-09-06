@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/main.css">
+  <title>Jippets</title>
+</head>
+<body>
+  <header>
+    <!-- <img src="./assets/logo.png" alt="logo" class="site-logo"> -->
+    <h1>Jippets</h1>
+  </header>
+  <main>
+    <div class="search-container">
+      <input type="text" id="search">
+      <button class="add-jippet"><p>+</p></button>
+    </div>
+    <div class="filter-container">
+      <p>Language</p><hr>
+      <label for="lang_html">HTML</label>
+      <input type="checkbox" name="test" id="lang_html" value="lang_html">
+      <label for="lang_css">CSS</label>
+      <input type="checkbox" name="test" id="lang_css" value="lang_css">
+      <label for="lang_js">JavaScript</label>
+      <input type="checkbox" name="test" id="lang_js" value="lang_js">
+      <!-- <p>Properties</p><hr>
+      <label for="prop_dependent">Dependent</label>
+      <input type="checkbox" name="test" id="prop_dependent" value="prop_dependent">
+      <label for="prop_protomod">Prototype modifier</label>
+      <input type="checkbox" name="test" id="prop_protomod" value="prop_protomod"> -->
+    </div>
+    <div class="jippets-container">
+      <div class="jippet">
+        <p class="name">testJippet</p>
+        <div class="keywords-container">
+          <span class="keyword">test</span>
+          <span class="keyword">english</span>
+          <span class="keyword">dev</span>
+          <span class="keyword">useless</span>
+        </div>
+        <p class="description">A simple jippet containing lorem ipsum that does absolutely nothing.</p>
+        <div class="code-header">
+          <div class="action-buttons">
+            <button class="copy-button">Copy</button>
+          </div>
+          <div class="languages">
+            <span style="--lang: 'HTML'"><img src="./assets/icons/html.svg" alt="HTML"></span>
+            <span style="--lang: 'CSS'"><img src="./assets/icons/css.svg" alt="CSS"></span>
+            <span style="--lang: 'JavaScript'"><img src="./assets/icons/javascript.svg" alt="JavaScript"></span>
+          </div>
+        </div>
+        <hr>
+        <div class="code-container">
+          <div class="code">
+            <pre>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi consectetur ab dolore pariatur expedita dolores atque officiis aperiam id reprehenderit iure nemo optio debitis, quasi impedit repellat eos, in possimus voluptas fuga laboriosam sed earum?</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <p>Made with ♥ by <a href="https://github.com/DevJesseCode/"><em>DevJesseCode</em></a></p>
+  </footer>
+  <script src="./js/jippets.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>

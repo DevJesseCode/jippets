@@ -1,0 +1,280 @@
+@font-face {
+  font-family: "Fira Code",
+  src: url("../assets/fonts/firacode.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+::root {
+  --fonts-1: "Segoe UI", Tahoma, Verdana, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #eaeaea;
+  font-family: var(--fonts-1);
+}
+
+header {
+  display: grid;
+  padding: 1rem;
+  background: white;
+  align-items: center;
+  box-shadow: 0 0 .3rem 1px black;
+  h1 {
+    margin: 0;
+    font-weight: 400;
+    font-size: 2rem;
+  }
+}
+
+footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  padding: 1rem;
+  position: fixed;
+  background: #777;
+  align-items: center;
+  justify-content: center;
+  p {
+    margin: 0;
+    color: #ddd;
+    a {
+      color: cyan;
+      font-style: italic;
+      text-decoration: none;
+    }
+  }
+}
+
+main {
+  padding: 2rem;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.search-container {
+  height: min(10vmin, 200px);
+  position: relative;
+  display: flex;
+  align-items: center;
+  transition: all .5s ease-out;
+  gap: 3%;
+}
+
+.search-container::before {
+  content: "I'm looking for...";
+  background: linear-gradient(to bottom, transparent 50%, #f4f4f4 50%);
+  pointer-events: none;
+  position: absolute;
+  font-size: 2vmin;
+  padding: 1vmin;
+  left: 5vmin;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all .25s ease-out;
+}
+
+.search-container.inuse::before {
+  top: 0;
+}
+
+#search {
+  width: 100%;
+  height: 100%;
+  padding: 0 3vmin;
+  font-size: 3vmin;
+  background: #f4f4f4;
+  box-sizing: border-box;
+  border: 1px solid #444;
+  border-radius: 5vmin;
+}
+
+#search:focus-within {
+  outline: none;
+}
+
+.add-jippet {
+  height: 100%;
+  aspect-ratio: 1;
+  border-radius: 25%;
+  transition: all .5s ease;
+  p {
+    margin: 0;
+    line-height: 1;
+    font-size: 4.5vmin;
+  }
+}
+
+.add-jippet:hover {
+  border-radius: 50%;
+  scale: 1.25;
+}
+
+.filter-container {
+  scale: 0;
+  padding: 0;
+  width: 53%;
+  max-width: 400px;
+  overflow: hidden;
+  top: 4.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 1rem;
+  background-color: #f4f4f4;
+  transition: all .65s ease-in-out;
+  border: 1px solid transparent;
+  transform: translateX(-100%) translateY(-100%);
+  p {
+    margin: 1.2rem 0 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    width: 100%;
+  }
+  p:nth-child(1) {
+    margin-top: 0;
+  }
+  hr {
+    width: 100%;
+  }
+  label {
+    width: calc(100% - 32px);
+  }
+  input {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.filter-container.open {
+  scale: 1;
+  padding: 1rem;
+  transform: none;
+  border: 1px solid #444;
+}
+
+.jippets-container {
+  margin-top: 2rem;
+}
+
+.jippet {
+  padding: 1rem;
+  background: #add;
+  border-radius: 1rem;
+  margin-bottom: 3rem;
+  box-sizing: border-box;
+  font-family: var(--fonts-1);
+  box-shadow: .1rem .1rem .3rem 0 white, .15rem .15rem .2rem .2rem black;
+  .name {
+    margin: 0 0 .5rem;
+    font-weight: 700;
+    font-size: 1.3rem;
+  }
+  .keywords-container {
+    gap: 2%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    .keyword {
+      color: #fff;
+      min-width: 10%;
+      background: #0003;
+      text-align: center;
+      border-radius: 2rem;
+      padding: .3rem .6rem;
+      border: 1px solid white;
+    }
+  }
+  .code-header {
+    display: flex;
+    align-items: center;
+    border-radius: inherit;
+    justify-content: space-between;
+    .action-buttons {
+      display: flex;
+      align-items: center;
+      border-radius: inherit;
+      button {
+        padding: .3rem 1.25rem;
+      }
+      .copy-button {
+        color: #eee;
+        outline: none;
+        border: 1px solid #eee;
+        transition: all .5s ease-out;
+        text-shadow: 0 0 .4rem black, 0 0 .4rem black;
+        border-top-left-radius: inherit;
+        border-bottom-right-radius: inherit;
+        background: linear-gradient(to bottom right, pink, purple, cyan);
+        background-size: 15rem 15rem;
+        background-position: 0% center;
+      }
+      .copy-button:hover {
+        background-position: 100% center;
+        border-color: transparent;
+      }
+    }
+    .languages {
+      width: max-content;
+      height: 1.25rem;
+      text-align: right;
+      img {
+        aspect-ratio: 1;
+        height: 100%;
+      }
+      span { position: relative; }
+      span::after {
+        left: 0;
+        scale: 0;
+        z-index: 1;
+        display: block;
+        padding: .25rem;
+        font-size: .7rem;
+        position: absolute;
+        content: var(--lang);
+        border-radius: .5rem;
+        border: 1px solid #888;
+        background-color: white;
+        transition: all .3s ease-in;
+        transform: translateX(calc(-50% + .625rem));
+      }
+      span:hover::after {
+        scale: 1;
+        transition: all .5s ease-out;
+      }
+    }
+  }
+  hr {
+    height: 1px;
+    margin-top: .2rem;
+    background-color: black;
+  }
+  .code-container {
+    padding: .5rem;
+    background: black;
+    position: relative;
+    overflow-y: scroll;
+    max-height: 12.5rem;
+    scrollbar-width: thin;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+    .code {
+      position: relative;
+      width: max-content;
+      background: linear-gradient(to bottom right, white, pink, #bfb, #bbf);
+      -webkit-background-clip: text;
+      background-clip: text;
+      pre {
+        color: #0000;
+        font-weight: bold;
+        font-family: "Fira Code", initial;
+      }
+    }
+  }
+}
